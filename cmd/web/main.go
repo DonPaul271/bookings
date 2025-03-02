@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"net/http"
+	"time"
+
 	"github.com/alexedwards/scs/v2"
 	"github.com/tsawler/bookings-app/pkg/config"
 	"github.com/tsawler/bookings-app/pkg/handlers"
 	"github.com/tsawler/bookings-app/pkg/render"
-	"log"
-	"net/http"
-	"time"
 )
 
 const portNumber = ":8080"
@@ -40,7 +41,6 @@ func main() {
 
 	repo := handlers.NewRepo(&app)
 	handlers.NewHandlers(repo)
-
 	render.NewTemplates(&app)
 
 	fmt.Println(fmt.Sprintf("Staring application on port %s", portNumber))
